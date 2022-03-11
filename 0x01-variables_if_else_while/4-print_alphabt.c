@@ -10,12 +10,16 @@ int main(void)
 
 	for (a = 'a'; a <= 'z'; a++)
 	{
-		if (a != 'q' && a != 'e')
+		if (a != 'e' && a != 'q')
 		{
-			continue;
+			putchar(a);
+
 		}
-		putchar(a);
+		else
+		{
+		}
 	}
-	putchar('\n');
+	putchar("\n");
 	return (0);
 }
+		
