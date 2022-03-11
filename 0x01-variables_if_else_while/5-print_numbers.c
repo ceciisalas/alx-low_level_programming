@@ -1,17 +1,15 @@
 #include <stdio.h>
 /**
- * main - Print all sigle digit numbers of base 10
+ * main - Prints all sigle digit numbers of base 10.
  *
  * Return: 0 (Success)
  */
 int main(void)
 {
-	int i = 0;
+	int num;
 
-	for (i < 10; i++)
-	{
-		printf("%d", i);
-	}
-	putchar('\n');
+	for (num = 0; num < 10; num++)
+		printf("%d", num);
+	printf("\n");
 	return (0);
 }
