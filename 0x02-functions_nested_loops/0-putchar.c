@@ -1,20 +1,19 @@
 #include "main.h"
 
 /**
- * main - prints my name
+ * main - prints my _putchar
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-	_putchar('C');
-	_putchar('E');
-	_putchar('C');
-	_putchar('I');
-	_putchar('L');
-	_putchar('I');
-	_putchar('A');
-	_putchar('A');
-	_putchar('\n');
+	char name[8] = "_putchar";
+	int i = 0;
+
+	while (name[i])
+	{
+		_putchar(name[i]);
+		i++;
+	}
 	return (0);
 }
