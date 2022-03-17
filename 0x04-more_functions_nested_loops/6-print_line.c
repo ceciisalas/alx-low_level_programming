@@ -8,7 +8,9 @@
  */
 void print_line(int n)
 {
-	for (n = 0; n < 65; i++)
+	int i;
+
+	for (i = 0; i < 65; i++)
 	{
 		_putchar('_´);
 	}
