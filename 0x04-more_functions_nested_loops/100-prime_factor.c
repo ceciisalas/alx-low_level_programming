@@ -1,22 +1,22 @@
-#include <stdio.h>
+#include "main.h"
 /**
- * main - Calculate largest prime 
+ * print_number - prints an integer
+ * @n:.input integer parameter
  *
- * Return: 0i
+ *
  */
-int main(void)
+void print_number(int n)
 {
-	long i, number = 612852475143;
+	unsigned int i = n;
 
-	for (i  = 2; i <= number; i++)
+	if (n < 0)
 	{
-		if (number % i == 0)
-		{
-			number = number / i;
-			i--;
-		}
+		_putchar(45);
+		i = -i;
 	}
-
-	printf("%lu\n", i);
-	return (0);
+	if (i / 10)
+	{
+		print_number(i / 10);
+	}
+	_putchar(i % 10 + '0');
 }
