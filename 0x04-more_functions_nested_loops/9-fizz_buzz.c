@@ -1,34 +1,39 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * main - Fizz buzz
+ * main - Fizz for multiples of 3 and 5 Buzz
  *
- * Return: Always 0
+ * Return: 0
  */
 int main(void)
 {
-	int i;
+	int x = 1;
 
-	for (i = 0; i <= 100; i++)
+	while (x < 101)
 	{
-		if ((i % 5) == 0 && (i % 3) == 0)
+		if (x % 3 == 0 && x % 5 == 0)
 		{
-			printf("FizzBuzz");
+			printf("%s", "FizzBuzz");
 		}
-		else if (i % 3 == 0)
+		else if (x % 3 == 0)
 		{
-			printf("Fizz");
+			printf("%s", "Fizz");
 		}
-		else if (i % 5 == 0)
+		else if (x % 5 == 0)
 		{
-			printf("Buzz");
+			printf("%s", "Buzz");
 		}
 		else
 		{
-			printf("%d", i);
+			printf("%d", x);
 		}
-		printf("Buzz");
-		printf("\n");
-		return (0);
+
+		if (x != 100)
+		{
+		printf(" ");
+		}
+		x++;
 	}
+	printf("\n");
+	return (0);
 }
