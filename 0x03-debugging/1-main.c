@@ -16,6 +16,7 @@ int main(void)
 	/*This cause an infinite loop*/
 	while (i < 10)
 	{
+	/*Infinite loop*/
 	putchar(i);
 	}
 
