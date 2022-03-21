@@ -7,12 +7,24 @@
  */
 void print_rev(char *s)
 {
-	int i, count, j;
+	int a, b;
+	char *start, *end, temp;
 
-	for (i = 0; i < count; i++)
-	{
-		rev[i] = *s[j];
-		j--;
-	}
+	a = string_length(s);
+
+	start = s;
+	end = s;
+
+	for (b = 0; b < a - 1; b++)
+		end++
+			for (b = 0; b < a / 2; b++)
+			{
+				temp = *end;
+				*end = *start;
+				*start = temp;
+
+				start++;
+				end--;
+			}
 	_putchar('\n');
 }
