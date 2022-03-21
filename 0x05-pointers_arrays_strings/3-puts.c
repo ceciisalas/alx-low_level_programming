@@ -7,8 +7,11 @@
  */
 void _puts(char *str)
 {
-	str[4] = "hola";
+	int c;
 
-	puts(str);
-	return (0);
+	for (c = 0; str[c]; c++)
+	{
+		_putchar(str[c]
+	}
+	_putchar('\n');
 }
