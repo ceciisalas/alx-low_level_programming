@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * rev_string - rev string
+ * print_rev - Reverse string
  * @s: string
  */
 
-void rev_string(char *s)
+void print_rev(char *s)
 {
 	char *t = s;
 	char n[100];
