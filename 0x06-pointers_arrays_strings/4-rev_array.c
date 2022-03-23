@@ -1,10 +1,10 @@
-#include "holberton.h"
+#include "main..h"
 
 /**
  * reverse_array - reverse
  * @a : pointer to int params
  * @n : pointer to int params
- * Return: no
+ * Return: nothing
  */
 
 void reverse_array(int *a, int n)
