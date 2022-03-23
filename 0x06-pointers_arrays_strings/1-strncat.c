@@ -1,22 +1,24 @@
 #include "main.h"
 /**
- * *_strncpy - Concatenates two strings
+ * *_strncat - Concatenates two strings
  * @dest: string
  * @src: string
  * @n: integer
  * Return: dest
  */
-char *_strncpy(char *dest, char *src, int n)
+char *_strncat(char *dest, char *src, int n)
 {
-	int i;
+	int i = 0;
+	int j = 0;
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
+	while (dest[i])
+		i++;
+	while (src[j] && j < n)
 	{
-		dest[i] = src[i];
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	for (; i < n; i++)
-	{
-		dest[i] = '\0';
-	}
+	dest[i] = '\0';
 	return (dest);
 }
