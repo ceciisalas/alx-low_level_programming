@@ -12,11 +12,11 @@ int isPrime(int n, int j)
 	{
 		return (1);
 	}
-	if (i % j == 0)
+	if (n % j == 0)
 	{
 		return (0);
 	}
-	return (is_prime(i, j - 1));
+	return (isPrime(n, j - 1));
 }
 
 /**
@@ -31,5 +31,5 @@ int is_prime_number(int n)
 	{
 		return (0);
 	}
-	return (is_prime(n, n - 1));
+	return (isPrime(n, n - 1));
 }
