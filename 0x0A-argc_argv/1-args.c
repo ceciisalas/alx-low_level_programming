@@ -1,15 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 /**
- * main - Prints the number of arguments passes into it
- * @argc: number of arguments
+ * main - Prints number of arguments
+ * @argc: number of command line arguments
  * @argv: array
  * Return: Always 0
  */
 int main(int argc, char *argv[])
 {
-	int i;
-	
-	for (i = 0; i < argc; i++)
+	for (int i = 0; i < argc; i++)
 		printf("argv[%d] = %s\n", i, argv[i]);
 	return (0);
 }
