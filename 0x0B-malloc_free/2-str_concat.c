@@ -2,30 +2,30 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- * *str_concat - Concatenates two strings
- * @s1: string 1
- * @s2: string 2
+ * str_concat - Concatenates 2 strings
+ * @s1: first string
+ * @s2: second string
  *
  * Return: NULL
  */
 char *str_concat(char *s1, char *s2)
 {
-	int len1, len2, i, j;
+	int s1_len, s2_len, i, j;
 	char *str;
 
 	if (s1 == NULL)
 	{
-		s1 = " ";
+		s1 = "";
 	}
 	else if (s2 == NULL)
 	{
-		s2 = " ";
+		s2 = "";
 	}
-	for (len1 = 0; s1[len1] != '\0'; len1++)
+	for (s1_len = 0; s1[s1_len] != '\0'; s1_len++)
 		continue;
-	for (len2 = 0; s2[len2] != '\0'; len2++)
+	for (s2_len = 0; s2[s2_len] != '\0'; s2_len++)
 		continue;
-	str = malloc(len1 + len2 + 1);
+	str = malloc(s1_len + s2_len + 1);
 
 	if (str == NULL)
 	{
@@ -33,13 +33,14 @@ char *str_concat(char *s1, char *s2)
 	}
 	i = 0;
 
-	while (i < len1)
+	while (i < s1_len)
 	{
 		str[i] = s1[i];
+		i++;
 	}
 	j = 0;
 
-	while (i < (len1 + len2))
+	while (i < (s1_len + s2_len))
 	{
 		str[i] = s2[j];
 		i++;
