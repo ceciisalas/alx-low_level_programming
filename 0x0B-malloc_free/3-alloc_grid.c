@@ -2,34 +2,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * **alloc_grid - Return pointer to a 2 dimensional array of integers
- * @width: integer
- * @height: integer
- *
- * Return: NULL on failure
+ * alloc_grid - array
+ * @width: width of array
+ * @height: height of array
+ * Return: pointer of new grid
  */
 int **alloc_grid(int width, int height)
 {
-	int **arr;
+	int **t;
 	int i;
+	int j;
 
-	if (width == 0 || height == 0)
-	{
+	if (width <= 0 || height <= 0)
 		return (NULL);
-	}
-	arr = (int **) malloc(height * sizeof(int *));
 
-	if (arr == 0)
-	{
+	t = (int **)malloc(sizeof(int *) * height);
+	if (t == NULL)
 		return (NULL);
-	}
+
 	for (i = 0; i < height; i++)
 	{
-		arr[i] = malloc(width * sizeof(int));
+		t[i] = (int *)malloc(sizeof(int) * width);
+		if (t[i] == NULL)
+		{
+			for (j = 0; j < i; j++)
+			{
+				free(t[j]);
+			}
+			free(t);
+		}
 	}
-	if (arr != NULL)
-	{
-		return (arr);
-	}
-	return (NULL);
+
+	for (i = 0; i < height; i++)
+		for (j = 0; j < width; j++)
+			t[i][j] = 0;
+
+	return (t);
 }
