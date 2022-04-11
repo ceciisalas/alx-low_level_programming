@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "dog.h"
+#include <stdlib.h>
 /**
- * Print dog - Print a dog
+ * print_dog - Print a dog
  * @d: dog
  *
  * Return: Always 0
