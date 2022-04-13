@@ -1,26 +1,28 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "3-calc.h"
 
 /**
- * main - main file
- * @argc: number of lines arguments
- * @argv: array of elements
- * Return: 0
+ * main - performs simple operations
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 1 for success
  */
 
 int main(int argc, char *argv[])
 {
-	int R;
+	register int a, b;
+	int (*fptr)(int, int);
 
 	if (argc != 4)
 	{
-		printf("Error\n");
-		exit(98);
+		printf("Error\n"), exit(98);
 	}
-
-	R = (*get_op_func(argv[2]))(atoi(argv[1]), atoi(argv[3]));
-	printf("%d\n", R);
-
-	return (0);
+	fptr = get_op_func(argv[2]);
+	if (!fptr)
+	{
+		printf("Error\n"), exit(99);
+	}
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+	printf("%i\n", fptr(a, b));
+	return (1);
 }
