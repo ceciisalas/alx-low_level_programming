@@ -1,91 +1,101 @@
 #include <stdarg.h>
-#include <stdlib.h>
 #include <stdio.h>
 #include "variadic_functions.h"
-/**
- * print_c - prints char
- * @a: list to give
- * Return: always 0
- */
-int print_c(va_list a)
-{
-	printf("%c", va_arg(a, int));
-	return (0);
-}
-/**
- * print_i - prints int
- * @a: list to give
- * Return: always 0
- */
-int print_i(va_list a)
-{
-	printf("%d", va_arg(a, int));
-	return (0);
-}
-/**
- * print_f - prints float
- * @a: list to give
- * Return: always 0
- */
-int print_f(va_list a)
-{
-	printf("%f", va_arg(a, double));
-	return (0);
-}
-/**
- * print_s - prints string
- * @a: list to give
- * Return: always 0
- */
-int print_s(va_list a)
-{
-	char *s;
 
-	s = va_arg(a, char *);
-	if (s == NULL)
+/**
+ * print_char - function that prints character
+ * @argptr: argument list pointer to character to be printed
+ */
+
+void print_char(va_list argptr)
+{
+	char character;
+
+	character = va_arg(argptr, int);
+	printf("%c", character);
+}
+
+/**
+ * print_int - function that prints integer
+ * @argptr: argument list pointer to integer to be printed
+ */
+
+void print_int(va_list argptr)
+{
+	int num_i;
+
+	num_i = va_arg(argptr, int);
+	printf("%i", num_i);
+}
+
+/**
+ * print_float - function that prints a float
+ * @argptr: argument list pointer to float to be printed
+ */
+
+void print_float(va_list argptr)
+{
+	float num_f;
+
+	num_f = va_arg(argptr, double);
+	printf("%f", num_f);
+}
+
+/**
+ * print_string - function that prints string
+ * @argptr: argument list pointer to string to be printed
+ */
+
+void print_string(va_list argptr)
+{
+	char *str;
+
+	str = va_arg(argptr, char*);
+
+	if (str == NULL)
 	{
 		printf("(nil)");
-		return (0);
+		return;
 	}
-	printf("%s", s);
-	return (0);
+	printf("%s", str);
 }
+
 /**
- * print_all - prints all
- * @format: format string that says arg types
- *
+ * print_all - function that prints anything
+ * @format: list of types of arguments passed to the function
+ * @...: number of arguments
+ * Return: Nothing
  */
+
 void print_all(const char * const format, ...)
 {
-	int i, j;
-	char *sep = "";
-	char *sep2 = ", ";
-	va_list anyArgs;
-	printer ops[] = {
-		{"c", print_c},
-		{"i", print_i},
-		{"s", print_s},
-		{"f", print_f},
-		{NULL, NULL}
-	};
+	va_list arguments;
+	int index, arg_len;
+	char *separator = "";
 
-	va_start(anyArgs, format);
-	i = 0;
-	while (format != NULL && format[i])
+	prints_t fmt_list[] = {
+		{"c", print_char},
+		{"i", print_int},
+		{"f", print_float},
+		{"s", print_string}
+	};
+	va_start(arguments, format);
+	index = 0;
+	while (format && (*(format + index)))
 	{
-		j = 0;
-		while (ops[j].f != NULL)
+		arg_len = 0;
+		while (arg_len < 4 && (*(format + index) != *(fmt_list[arg_len].notation)))
 		{
-			if (format[i] == *(ops[j].c))
-			{
-				printf("%s", sep);
-				ops[j].f(anyArgs);
-			}
-			j++;
+			arg_len++;
 		}
-		sep = sep2;
-		i++;
+		if (arg_len < 4)
+		{
+			printf("%s", separator);
+			fmt_list[arg_len].print_dType(arguments);
+			separator = ", ";
+		}
+		index++;
 	}
 	printf("\n");
-	va_end(anyArgs);
+	va_end(arguments);
 }
