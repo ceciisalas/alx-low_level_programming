@@ -1,15 +1,17 @@
 #include "lists.h"
 #include <stdlib.h>
+
 /**
- * delete_nodeint_at_index - Delete a node at a given position
- * @head: Head of the list
- * @index: Address
- * Return: 0 or -1
- */
+ * delete_nodeint_at_index - Delete a node at a given positiion.
+ * @head: First node address.
+ * @index: Position of the node to delete.
+ * Return: If success (1).
+ **/
+
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	unsgined int i;
-	listint_t *firstList, *next;
+	unsigned int i;
+	listint_t *current, *next;
 
 	if (head == NULL || *head == NULL)
 		return (-1);
@@ -20,15 +22,15 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		*head = next;
 		return (1);
 	}
-	firstList = *head;
+	current = *head;
 	for (i = 0; i < index - 1; i++)
 	{
-		if (firstList->next == NULL)
+		if (current->next == NULL)
 			return (-1);
-		firstList = firstList->next;
+		current = current->next;
 	}
-	next = firstList->next;
-	firstList->next = next->next;
+	next = current->next;
+	current->next = next->next;
 	free(next);
 	return (1);
 }
