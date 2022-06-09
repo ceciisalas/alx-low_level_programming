@@ -6,13 +6,18 @@
  */
 size_t print_dlistint(const dlistint_t *h)
 {
-	size_t coount = 0;
+	register int len = 0;
 
+	if (h == NULL)
+	{
+		printf("%s", "Empty list");
+	}
 	while (h != NULL)
 	{
-		printf("%d\n", h->n);
-		coount++;
-		h = h-> next;
+		int new_node = h-> n;
+		printf("%d\n", new_node);
+		h = h->next;
+		len++;
 	}
-	return(coount)
+	return (len);
 }
